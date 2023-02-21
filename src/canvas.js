@@ -53,6 +53,7 @@ function Canvas() {
       left: canvas.width / 2,
       top: canvas.height / 2,
       fill: '#fff'
+      
     });
 
     canvas.add(textObject);
@@ -68,7 +69,7 @@ function Canvas() {
             <input
               className="input"
               type="text"
-              placeholder="Enter text"
+              placeholder="Enter Text"
               value={text}
               onChange={handleTextChange}
             />

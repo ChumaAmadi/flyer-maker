@@ -5,7 +5,7 @@ function Navbar({ onImageUpload }) {
     <nav className="navbar">
       <div className="navbar-brand">
         <a href="/" className="navbar-item">
-          My App
+          Epsilon
         </a>
       </div>
       <div className="navbar-menu">
