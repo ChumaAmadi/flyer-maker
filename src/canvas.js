@@ -20,8 +20,8 @@ function Canvas() {
 
         // set canvas dimensions to fit entire page
         canvas.setDimensions({
-          width: window.innerWidth,
-          height: window.innerHeight
+          width: 1000,
+          height: 700
         });
 
         const image = new fabric.Image(imgObj);
