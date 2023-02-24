@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { fabric } from "fabric";
 import { saveAs } from "file-saver";
 import jsPDF from "jspdf";
+import NavBar from "./Navbar";
 
 const Canvas = () => {
   const [text, setText] = useState("");
@@ -48,7 +49,7 @@ const Canvas = () => {
         const imgAspectRatio = imgObj.width / imgObj.height;
         const canvasAspectRatio = canvasWidth / canvasHeight;
         let scaleFactor = 1;
-
+  
         if (imgAspectRatio > canvasAspectRatio) {
           // image is wider than canvas
           scaleFactor = canvasWidth / imgObj.width;
@@ -56,14 +57,14 @@ const Canvas = () => {
           // image is taller than canvas
           scaleFactor = canvasHeight / imgObj.height;
         }
-
+  
         const image = new fabric.Image(imgObj, {
           left: 0,
           top: 0,
           scaleX: scaleFactor,
           scaleY: scaleFactor,
         });
-
+        
         canvas.setBackgroundImage(image, canvas.renderAll.bind(canvas));
         canvas.setWidth(canvasWidth);
         canvas.setHeight(canvasHeight);
@@ -87,23 +88,17 @@ const Canvas = () => {
 
   return (
     <div className="canvas-container">
-      <nav>
-        <input type="file" id="imgLoader" onChange={handleImage} />
-        <button onClick={handleAddText}>Add Text</button>
-        <button onClick={handleClearCanvas}>Clear Canvas</button>
-        <button onClick={handleDownloadPdf}>Download PDF</button>
-        <input type="text" placeholder="Enter Text" onChange={handleTextChange} />
-        <input type="text" placeholder="Enter Font" onChange={handleFontChange} />
-        <input
-          type="number"
-          placeholder="Enter Font Size"
-          min="1"
-          max="100"
-          value={fontSize}
-          onChange={handleFontSizeChange}
-        />
-      </nav>
-      <canvas id="canvas" width={950} height={800} className="canvas-style"></canvas>
+      <NavBar
+        handleImage={handleImage}
+        handleAddText={handleAddText}
+        handleClearCanvas={handleClearCanvas}
+        handleDownloadPdf={handleDownloadPdf}
+        handleTextChange={handleTextChange}
+        handleFontChange={handleFontChange}
+        handleFontSizeChange={handleFontSizeChange}
+        fontSize={fontSize}
+      />
+      <canvas id="canvas" width={700} height={500}></canvas>
     </div>
   );
 };
